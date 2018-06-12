@@ -17,16 +17,24 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
+% predicted category
 h = sigmoid(X*theta);
 
+% reg for cost function
+% applies it to theta_2 and onwards but not theta_1
 regCost = sum(theta(2:end) .^ 2) * lambda / (2 * m);
 
+% regularizaed cost
 J = (((-y)' * log(h)) - ((1 - y)' * log(1 - h)))/m + regCost;
 
+% setup for applying reg to all theta except for theta_1
 thetaCopy = theta;
 thetaCopy(1) = 0;
 
+% reg term for gradient
 regGrad = (thetaCopy * lambda)/m;
+
+% regularized gradient
 grad = (X'*(h - y))/m + regGrad;
 
 

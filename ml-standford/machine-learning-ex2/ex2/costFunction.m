@@ -19,9 +19,18 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+
+% h = prediction equation
+% use sigmoid() as a short hand instead of doing 1/(1 + e^-(X*theta))
 h = sigmoid(X*theta);
+
+% J is the cost function simplified version that incorporate cost function for
+% y = 0 and y = 1
 J = (((-y)' * log(h)) - ((1 - y)' * log(1 - h)))/m;
 
+% grad is gradient descent
+% will tell how it convery to global min
+% will give us the right "slopes" for the sigmoid function to predict/classify items
 grad = (X'*(h - y))/m;
 
 

@@ -19,6 +19,7 @@ figure; hold on;
 % y == 0 means not admitted
 
 % gets the index of where y == 1 (y is vector)
+% very cool syntax, much more complicated to implement in other languages
 pos = find(y == 1);
 % gets the index of where y == 0 (y is vector)
 neg = find(y == 0);

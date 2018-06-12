@@ -12,7 +12,8 @@ g = zeros(size(z));
 g = 1 ./ (1 + exp(-z));
 
 
-
+% initially i thought this was a built in function in octave
+% this is actually a function that returns the value of the sigmoid of z 
 % =============================================================
 
 end

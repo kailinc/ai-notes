@@ -111,6 +111,7 @@ options = optimset('GradObj', 'on', 'MaxIter', 400);
 %  argument t calls costFunction
 %  fminuc will optimize t
 %  return the theta and cost of the optimized way
+% do not use any loops or set a learning rate like how i did for gradient descent 
 [theta, cost] = ...
 	fminunc(@(t)(costFunction(t, X, y)), initial_theta, options);
 
