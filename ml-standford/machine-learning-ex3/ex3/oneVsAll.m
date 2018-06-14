@@ -64,9 +64,13 @@ for i = 1:num_labels,
   % (y == i) is a sugar sytanx
   % pass in lambda, initial_theta, which is vector of 0
   % pass in options for fmincg
+  % trains the classifier for each category at a time with 400 img
+  % each row represents the learned logistic regression parameter
+  % another works each row represents the learned theta for the category
+  % this way the ai is making the best theta for prediciting img to be of that category 
   all_theta(i, :) = fmincg(@(t)(lrCostFunction(t, X, (y == i), lambda)), initial_theta, options);
 end
-
+all_theta
 
 
 
