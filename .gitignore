@@ -1,7 +1,5 @@
 *.docx
 *.pdf
-*.mat
 /submit.m
-/octave-workspace
 lib/
 /token.mat
