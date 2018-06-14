@@ -54,7 +54,7 @@ initial_theta = zeros(n + 1, 1);
 
 % options for fmincg
 % let it return the gradients, and the max iteration for applying the cost function is 50
-options = optimset('GradObj', 'on', 'MaxIter', 100);
+options = optimset('GradObj', 'on', 'MaxIter', 50);
 
 % loop through each category
 for i = 1:num_labels,
@@ -67,8 +67,7 @@ for i = 1:num_labels,
   all_theta(i, :) = fmincg(@(t)(lrCostFunction(t, X, (y == i), lambda)), initial_theta, options);
 end
 
-size(all_theta)
-all_theta
+
 
 
 
