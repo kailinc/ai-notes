@@ -20,16 +20,26 @@ p = zeros(size(X, 1), 1);
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
 %
+% first layer, gets the inputs
 a1 = [ones(m, 1) X];
+
+% second layer (hidden layer)
+%  a1 x Theta1 (pre-exisiting) to get z2
 z2 = a1*Theta1';
+% activation on z2
 a2 = [ones(size(z2, 1), 1) sigmoid(z2)];
+
+% Third layer
+%  a1 x Theta1 (pre-exisiting) to get z2
 z3 = a2*Theta2';
+% activation on z3
 a3 = sigmoid(z3);
 
+% this is the prediction part, select the max prob for each category to the img
 [p_max, p] = max(a3, [], 2);
 
-
-
+p_max
+p
 
 
 
