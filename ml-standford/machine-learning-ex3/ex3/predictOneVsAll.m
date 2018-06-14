@@ -30,8 +30,17 @@ X = [ones(m, 1) X];
 %       for each row.
 %
 
+% this is getting the prob for diff category of each img
+% use sigmoid of item times all_theta
+% all_theta is the learned classifier for categories
 prob = sigmoid(X* all_theta');
+
+% p_max is the max probability of the row
+% each row represents an img
+% i_max = index of that probability 
 [p_max, i_max] = max(prob, [], 2);
+
+% clever way of mapping the prediction of the img to the result using i_max
 p = i_max;
 
 
