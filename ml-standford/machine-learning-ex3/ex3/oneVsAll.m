@@ -49,12 +49,26 @@ X = [ones(m, 1) X];
 %                 initial_theta, options);
 %
 
+% make an initial theta for each category (1-10)
 initial_theta = zeros(n + 1, 1);
-options = optimset('GradObj', 'on', 'MaxIter', 50);
 
+% options for fmincg
+% let it return the gradients, and the max iteration for applying the cost function is 50
+options = optimset('GradObj', 'on', 'MaxIter', 100);
+
+% loop through each category
 for i = 1:num_labels,
+  % use fmincg to train classifier for each category
+  % pass in X, which is picture
+  % (y == i), is a vector for each category, returns a vector with 1 in the catgory, 0 in the rest of the category
+  % (y == i) is a sugar sytanx
+  % pass in lambda, initial_theta, which is vector of 0
+  % pass in options for fmincg
   all_theta(i, :) = fmincg(@(t)(lrCostFunction(t, X, (y == i), lambda)), initial_theta, options);
 end
+
+size(all_theta)
+all_theta
 
 
 

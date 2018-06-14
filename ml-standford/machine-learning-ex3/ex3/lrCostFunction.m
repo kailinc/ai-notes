@@ -45,10 +45,7 @@ thetaCopy(1) = 0;
 
 regGrad = (lambda/m) * thetaCopy;
 grad = (X'*(h - y))/m + regGrad;
-
-
 % =============================================================
 
 grad = grad(:);
-
 end
