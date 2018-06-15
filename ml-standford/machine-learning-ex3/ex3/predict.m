@@ -21,16 +21,21 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 % first layer, gets the inputs
+% have to add a bias input node with this syntax
 a1 = [ones(m, 1) X];
 
 % second layer (hidden layer)
 %  a1 x Theta1 (pre-exisiting) to get z2
+% have to tranpose Theta1 to get dimensions to satisfy for multiplication
 z2 = a1*Theta1';
 % activation on z2
+% this syntax will add a bias node for the next layer
+% ones(...) will create a matrix of the size of z2 with an extra row for the bias node with default value of 1
 a2 = [ones(size(z2, 1), 1) sigmoid(z2)];
 
 % Third layer
 %  a1 x Theta1 (pre-exisiting) to get z2
+% have to tranpose Theta1 to get dimensions to satisfy for multiplication
 z3 = a2*Theta2';
 % activation on z3
 a3 = sigmoid(z3);

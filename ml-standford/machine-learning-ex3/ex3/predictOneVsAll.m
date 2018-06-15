@@ -37,7 +37,7 @@ prob = sigmoid(X* all_theta');
 
 % p_max is the max probability of the row
 % each row represents an img
-% i_max = index of that probability 
+% i_max = index of that probability
 [p_max, i_max] = max(prob, [], 2);
 
 % clever way of mapping the prediction of the img to the result using i_max
