@@ -55,7 +55,7 @@ for i=1:num_labels,
     Y(:,i) = (y==i);
 endfor
 
-% sum cost for all items at all categories 
+% sum cost for all items at all categories
 J = sum(sum(((-Y).*log(h)) - ((1-Y).* log(1-h))))/m;
 
 
@@ -74,7 +74,10 @@ J = sum(sum(((-Y).*log(h)) - ((1-Y).* log(1-h))))/m;
 %         Hint: We recommend implementing backpropagation using a for-loop
 %               over the training examples if you are implementing it for the
 %               first time.
-%
+
+
+
+
 % Part 3: Implement regularization with the cost function and gradients.
 %
 %         Hint: You can implement this around the code for
@@ -83,7 +86,11 @@ J = sum(sum(((-Y).*log(h)) - ((1-Y).* log(1-h))))/m;
 %               and Theta2_grad from Part 2.
 %
 
+theta1Reg = sum(sum(Theta1(:, 2:end).^2));
+theta2Reg = sum(sum(Theta2(:, 2:end).^2));
+Jgrad = (lambda / (2 * m)) * ( theta1Reg + theta2Reg);
 
+J = J + Jgrad;
 
 
 
