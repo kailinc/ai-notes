@@ -5,24 +5,39 @@ function numgrad = computeNumericalGradient(J, theta)
 %   gradient of the function J around theta. Calling y = J(theta) should
 %   return the function value at theta.
 
-% Notes: The following code implements numerical gradient checking, and 
-%        returns the numerical gradient.It sets numgrad(i) to (a numerical 
-%        approximation of) the partial derivative of J with respect to the 
-%        i-th input argument, evaluated at theta. (i.e., numgrad(i) should 
-%        be the (approximately) the partial derivative of J with respect 
+% Notes: The following code implements numerical gradient checking, and
+%        returns the numerical gradient.It sets numgrad(i) to (a numerical
+%        approximation of) the partial derivative of J with respect to the
+%        i-th input argument, evaluated at theta. (i.e., numgrad(i) should
+%        be the (approximately) the partial derivative of J with respect
 %        to theta(i).)
-%                
+%
 
+% initializing variables to be used in gradient checking
+% numer of gradients
 numgrad = zeros(size(theta));
+
+% not sure what this is
 perturb = zeros(size(theta));
+
+% settting epsilon to be 0.0001
 e = 1e-4;
+
+% loop the theta's
 for p = 1:numel(theta)
     % Set perturbation vector
     perturb(p) = e;
+
+    % get J(theta - e)
     loss1 = J(theta - perturb);
+
+    % get J(theta + e)
     loss2 = J(theta + perturb);
+
     % Compute Numerical Gradient
     numgrad(p) = (loss2 - loss1) / (2*e);
+
+    % mysterious line of code
     perturb(p) = 0;
 end
 
