@@ -127,9 +127,14 @@ Jgrad = (lambda / (2 * m)) * ( theta1Reg + theta2Reg);
 J = J + Jgrad;
 
 % regularized gradients
+
+% reg theta1 and theta2 for j >= 1
+% theta1_grad(:, 1) will only consider first column of the matrix, all rows 
 Theta1_grad( :, 1) = Theta1_grad(:,1) ./m ;
 Theta2_grad( :, 1) = Theta2_grad(:,1) ./m ;
 
+% reg theta1 and theta2 for j >= 1
+% theta1_grad(:, 2:end) will only consider 2n column onwards of matrix, all rows
 Theta1_grad( :, 2:end) = Theta1_grad(:,2:end) ./m + ((lambda/m)*Theta1(:, 2:end));
 Theta2_grad( :, 2:end) = Theta2_grad(:,2:end) ./m + ((lambda/m)*Theta2(:, 2:end));
 
