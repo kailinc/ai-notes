@@ -108,8 +108,8 @@ for t = 1:m,
 endfor
 
 % STEP 5 OBTAIN UNREGULARIZED GRADIENTS FOR NEURAL NETWORK
-Theta2_grad = Theta2_grad ./ m;
-Theta1_grad = Theta1_grad ./ m;
+% Theta2_grad = Theta2_grad ./ m;
+% Theta1_grad = Theta1_grad ./ m;
 
 % Part 3: Implement regularization with the cost function and gradients.
 %
@@ -119,25 +119,19 @@ Theta1_grad = Theta1_grad ./ m;
 %               and Theta2_grad from Part 2.
 %
 
+% regularized J
 theta1Reg = sum(sum(Theta1(:, 2:end).^2));
 theta2Reg = sum(sum(Theta2(:, 2:end).^2));
 Jgrad = (lambda / (2 * m)) * ( theta1Reg + theta2Reg);
 
 J = J + Jgrad;
 
+% regularized gradients
+Theta1_grad( :, 1) = Theta1_grad(:,1) ./m ;
+Theta2_grad( :, 1) = Theta2_grad(:,1) ./m ;
 
-
-
-
-
-
-
-
-
-
-
-
-
+Theta1_grad( :, 2:end) = Theta1_grad(:,2:end) ./m + ((lambda/m)*Theta1(:, 2:end));
+Theta2_grad( :, 2:end) = Theta2_grad(:,2:end) ./m + ((lambda/m)*Theta2(:, 2:end));
 
 % -------------------------------------------------------------
 
