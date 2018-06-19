@@ -75,8 +75,33 @@ J = sum(sum(((-Y).*log(h)) - ((1-Y).* log(1-h))))/m;
 %               over the training examples if you are implementing it for the
 %               first time.
 
+X = [ones(m,1) X];
 
+for t = 1:m,
+  % step 1
+  a1 = X(t, :);
 
+  z2 = Theta1 * a1';
+  a2 = [1; sigmoid(z2)];
+
+  z3 = Theta2 * a2;
+  a3 = sigmoid(z3);
+
+  % step 2
+  d3 = a3 .- Y(t,:)';
+
+  % step 3
+  z2 = [1; z2];
+  d2 = (Theta2' * d3) .* sigmoidGradient(z2);
+  d2 = d2(2:end);
+
+ % step 4
+ Theta2_grad = Theta2_grad + (d3 * a2');
+ Theta1_grad = Theta1_grad + (d2 * a1);
+endfor
+
+Theta2_grad = Theta2_grad ./ m;
+Theta1_grad = Theta1_grad ./ m;
 
 % Part 3: Implement regularization with the cost function and gradients.
 %
