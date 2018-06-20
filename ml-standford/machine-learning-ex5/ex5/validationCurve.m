@@ -39,9 +39,15 @@ error_val = zeros(length(lambda_vec), 1);
 %
 %
 
+% looping through the lambda's
 for i = 1:length(lambda_vec)
+    % set lambda for the cur iteration
     lambda = lambda_vec(i);
+
+    % use trainLinearReg() to get theta for this lambda
     theta = trainLinearReg(X, y, lambda);
+
+    % cal the training error and CV error
     error_train(i) = linearRegCostFunction(X, y, theta, 0);
     error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
 end
