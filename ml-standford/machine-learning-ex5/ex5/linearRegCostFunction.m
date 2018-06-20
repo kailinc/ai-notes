@@ -32,6 +32,7 @@ JReg = lambda/(2 * m) * sum(thetaCopy.^2);
 % putting the cost function and reg together
 J = sum((h-y).^2)/(2 * m) + JReg;
 
+% j = 0 and j >= 1 is taken care of for reg because thetaCopy(1) is set to 0 
 grad = (X' * (h - y))/m + (lambda/m)*thetaCopy;
 
 
