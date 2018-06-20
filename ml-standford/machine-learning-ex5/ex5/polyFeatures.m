@@ -15,8 +15,13 @@ X_poly = zeros(numel(X), p);
 %
 %
 
+% set the first col to be X
 X_poly(:,1) = X;
+
+% loop over powers
 for i=2:p
+    % set each col in X_poly to be X.^p
+    % multiple the cur col by the previous col
     X_poly(:,i) = X.*X_poly(:,i-1);
 end
 
