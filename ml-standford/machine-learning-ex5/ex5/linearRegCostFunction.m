@@ -19,13 +19,17 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+% h represents the prediction
 h = X * theta;
 
+% don't apply reg on where j = 1
 thetaCopy = theta;
 thetaCopy(1) = 0;
 
+% Reg for the cost function
 JReg = lambda/(2 * m) * sum(thetaCopy.^2);
 
+% putting the cost function and reg together 
 J = sum((h-y).^2)/(2 * m) + JReg;
 
 
