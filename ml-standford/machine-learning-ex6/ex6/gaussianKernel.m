@@ -15,8 +15,11 @@ sim = 0;
 %               sigma
 %
 %
+
+% diff of x1 and x2
 top = -sum((x1 .- x2).^2);
 bot = 2 * (sigma^2);
+% formula of Gaussian Kernel
 sim = exp(top/bot);
 
 
