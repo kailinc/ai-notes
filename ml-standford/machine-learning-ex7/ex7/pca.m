@@ -20,7 +20,9 @@ S = zeros(n);
 %       number of examples).
 %
 
+% calculating sigma
 sigma = (X'*X)/m;
+% use svd() to get U and S
 [U, S, V] = svd(sigma);
 
 
