@@ -21,8 +21,11 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               Notice that U(j, 1:K) is a row vector.
 %
 
+% looping through the Z's
 for i = 1:size(Z,1)
+  % get the right u, scaled by K components
   U = U(:, 1:K);
+  % set/get recovered x from Z and U
   X_rec(i, :) = (U * Z(i, :)')';
 end
 
