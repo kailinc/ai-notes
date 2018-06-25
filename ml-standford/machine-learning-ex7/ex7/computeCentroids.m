@@ -26,15 +26,23 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+% looping through the number of clusters
 for k = 1:K
+  % number of points in the cluster
   num = 0;
+  % vector to store features of the data points
   acc = zeros(n,1);
+  % loop through the training examples
   for i = 1:m
+    % if the data point is assigned to the current cluster accumulate the features
     if (idx(i) == k)
+      % have to transpose the datapoint to meet the dimensions
       acc = acc + X(i, :)';
+      % update num of points accordingly
       num = num + 1;
     end
   end
+  % cal new location( mean of features) for current centroid 
   centroids(k, :) = (acc/num)';
 end
 
