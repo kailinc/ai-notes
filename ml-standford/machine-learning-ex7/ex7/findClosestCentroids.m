@@ -41,6 +41,20 @@ for i = 1:m
 end
 
 
+% tried to vectorize this 
+% didn't work because have to make xMatrix to be [x;x;x;x] according to num of centroids
+% don't know how to do this in octave
+% m = size(X,1);
+% % looping through the training examples
+% for i = 1:m
+%   % loop through centroids
+%   x = X(i, :);
+%   xMatrix = [ones(size(centroids),2)]
+%   errorMatrix = (xMatrix .- centroids).^2;
+%   errors = sum(errorMatrix, 2);
+%   [min_val, min_index] = min(errors, [], 1);
+%   idx(i) = min_index;
+% end
 
 
 
