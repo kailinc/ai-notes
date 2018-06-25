@@ -20,14 +20,19 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+
+% number of trainning examples
 m = size(X,1);
+% looping through the training examples
 for i = 1:m
-  x = X(i);
-  error = zeros(3,1);
+  % placeholder for min distance
   minDist = 1000;
+  % loop through centroids
   for k = 1:K
+    % get error of the cur point and a centroid
     error = X(i, :) - centroids(k, :);
     dist = error * error';
+    % assign x to the closest centroid
     if dist < minDist
       minDist = dist;
       idx(i) = k;
