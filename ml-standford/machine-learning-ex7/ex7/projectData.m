@@ -17,9 +17,12 @@ Z = zeros(size(X, 1), K);
 %                    x = X(i, :)';
 %                    projection_k = x' * U(:, k);
 
+% looping the data points
 for i = 1:size(X,1)
- x = X(i, :)';
- Z(i, :) = (U(:, 1:K)' * x)';
+  % getting the current data point
+  x = X(i, :)';
+  % get the projection onto top K components in U
+  Z(i, :) = (U(:, 1:K)' * x)';
 end
 
 
