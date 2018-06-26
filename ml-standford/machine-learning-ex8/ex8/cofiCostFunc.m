@@ -42,11 +42,14 @@ Theta_grad = zeros(size(Theta));
 
 % diff for cost function
 diff = (X*Theta'-Y);
+
 % used cool technique here
 % used (R==1) to only sum values where R==1
 J = sum((diff.^2)(R==1))/2;
 
+% gradient for X
 X_grad = (diff.*R)*Theta;
+% gradient for Theta 
 Theta_grad = (diff.*R)'*X;
 
 
