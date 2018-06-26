@@ -13,6 +13,8 @@ F1 = 0;
 
 
 stepsize = (max(pval) - min(pval)) / 1000;
+
+% loop through diff values of epsilon
 for epsilon = min(pval):stepsize:max(pval)
 
     % ====================== YOUR CODE HERE ======================
@@ -24,19 +26,32 @@ for epsilon = min(pval):stepsize:max(pval)
     %
     % Note: You can use predictions = (pval < epsilon) to get a binary vector
     %       of 0's and 1's of the outlier predictions
+
+    % vector for cvPredictions, 1 if anomaly, 0 otherwise
     cvPredictions = (pval < epsilon);
 
+    % true positive
+    % used a really cool octave tech that sums the number of instance
+    % where the two conditions are met
     tp = sum((cvPredictions == 1) & (yval == 1));
+
+    % false positive
     fp = sum((cvPredictions == 1) & (yval == 0));
+
+    % false negative
     fn = sum((cvPredictions == 0) & (yval == 1));
 
+    % precision
     prec = tp/ (tp + fp);
+
+    % recall
     rec = tp/ (tp + fn);
 
+    % f1 score
     F1 = (2 * prec * rec) / (prec + rec);
 
     % =============================================================
-
+    % update bestF1 and bestEpsilon if there is a better threshold
     if F1 > bestF1
        bestF1 = F1;
        bestEpsilon = epsilon;
