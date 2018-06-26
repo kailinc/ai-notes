@@ -62,10 +62,16 @@ X_grad = (diff.*R)*Theta;
 % gradient for Theta
 Theta_grad = (diff.*R)'*X;
 
+% reg term for grad X
 xGradReg = lambda * X;
+
+% reg term for grad theta
 thetaGradReg = lambda * Theta;
 
+% apply reg to XGrad
 X_grad = X_grad + xGradReg;
+
+% apply reg to ThetaGrad
 Theta_grad = Theta_grad + thetaGradReg;
 
 % =============================================================
