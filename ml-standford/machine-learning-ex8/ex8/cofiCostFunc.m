@@ -47,9 +47,14 @@ diff = (X*Theta'-Y);
 % used (R==1) to only sum values where R==1
 J = sum((diff.^2)(R==1))/2;
 
+jXReg = lambda * sum(sum(X.^2))/2;
+jThetaReg =lambda * sum(sum(Theta.^2))/ 2;
+
+J = J + jXReg + jThetaReg;
+
 % gradient for X
 X_grad = (diff.*R)*Theta;
-% gradient for Theta 
+% gradient for Theta
 Theta_grad = (diff.*R)'*X;
 
 
