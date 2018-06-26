@@ -56,24 +56,17 @@ jThetaReg =lambda * sum(sum(Theta.^2))/ 2;
 % adding reg terms for X and theta to cost
 J = J + jXReg + jThetaReg;
 
+
 % gradient for X
 X_grad = (diff.*R)*Theta;
 % gradient for Theta
 Theta_grad = (diff.*R)'*X;
 
+xGradReg = lambda * X;
+thetaGradReg = lambda * Theta;
 
-
-
-
-
-
-
-
-
-
-
-
-
+X_grad = X_grad + xGradReg;
+Theta_grad = Theta_grad + thetaGradReg;
 
 % =============================================================
 
