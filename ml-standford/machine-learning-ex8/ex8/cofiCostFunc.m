@@ -40,7 +40,10 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+% diff for cost function 
 diff = (X*Theta'-Y);
+% used cool technique here
+% used (R==1) to only sum values where R==1
 J = sum((diff.^2)(R==1))/2;
 
 % X_grad = sum((Theta' * X - y)*Theta);
