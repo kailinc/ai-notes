@@ -47,9 +47,13 @@ diff = (X*Theta'-Y);
 % used (R==1) to only sum values where R==1
 J = sum((diff.^2)(R==1))/2;
 
+% reg for X cost
 jXReg = lambda * sum(sum(X.^2))/2;
+
+% reg for theta cost
 jThetaReg =lambda * sum(sum(Theta.^2))/ 2;
 
+% adding reg terms for X and theta to cost
 J = J + jXReg + jThetaReg;
 
 % gradient for X
